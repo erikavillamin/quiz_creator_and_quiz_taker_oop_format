@@ -178,3 +178,10 @@ def load_quiz(file_name="quiz_questions.txt"):
 
     random.shuffle(quiz)
     return quiz
+
+if __name__ == "__main__":
+    quiz = load_quiz()
+    app_window = tk.Tk()
+    app_window.geometry("500x450")
+    app = QuizTakerApp(app_window, quiz)
+    app_window.mainloop()
