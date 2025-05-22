@@ -38,3 +38,7 @@ class QuizCreator:
             print(emoji.emojize("Question saved! :grinning_face_with_smiling_eyes:\n"))
         else:
             print(emoji.emojize("Question not saved. :frowning_face:\n"))
+
+    def ask_to_continue(self):
+        response = input("Do you want to add another question? (yes/no): ").strip().lower()
+        return response not in ["no", "n"]
