@@ -151,3 +151,30 @@ class QuizTakerApp:
         for widget in self.app_window.winfo_children():
             widget.destroy()
         self.__init__(self.app_window, self.quiz_questions)
+
+def load_quiz(file_name="quiz_questions.txt"):
+    with open(file_name, 'r') as file:
+        questions = file.read().strip()
+        blocks = questions.split('\n\n')
+
+    quiz = []
+    for block in blocks:
+        lines = block.strip().split('\n')
+
+        question_line = lines[0].replace("Question: ", "").strip()
+        choices_line = lines[1:5]
+
+        answer_line = lines[5]
+        if not answer_line.lower().startswith('answer: '):
+            print("Invalid format for answer line:", answer_line)
+            continue
+        quiz_answer = answer_line.replace("Answer: ", "").strip().upper()
+
+        quiz.append({
+            'question': question_line,
+            'choices': choices_line,
+            'answer': quiz_answer
+        })
+
+    random.shuffle(quiz)
+    return quiz
