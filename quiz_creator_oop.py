@@ -42,3 +42,14 @@ class QuizCreator:
     def ask_to_continue(self):
         response = input("Do you want to add another question? (yes/no): ").strip().lower()
         return response not in ["no", "n"]
+    
+    def run(self):
+        while True:
+            question = self.quiz_question()
+            choices = self.quiz_choices()
+            correct_ans = self.quiz_correct_answer()
+            self.save_question(question, choices, correct_ans)
+
+            if not self.ask_to_continue():
+                print(emoji.emojize("Thank you for using Quiz Creator. :waving_hand:"))
+                break
