@@ -87,3 +87,15 @@ class QuizTakerApp:
         else:
             self.answer_feedback_label.config(text="Time's up!")
             self.submit_answer(skip_check=True)
+
+    def submit_answer(self, skip_check=False):
+        if self.timer_id:
+            self.app_window.after_cancel(self.timer_id)
+            self.timer_id = None
+
+        user_answer = self.selected_option.get()
+        correct_answer = self.quiz_questions[self.current_question_index]['answer']
+        if not skip_check and user_answer == correct_answer:
+            self.total_score += 1
+        self.current_question_index += 1
+        self.display_next_question()
