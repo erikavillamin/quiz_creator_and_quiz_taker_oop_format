@@ -16,3 +16,11 @@ class QuizCreator:
         letter_c = input(emoji.emojize("Enter letter c :cow:: ")).strip()
         letter_d = input(emoji.emojize("Enter letter d :dog:: ")).strip()
         return letter_a, letter_b, letter_c, letter_d
+    
+    def quiz_correct_answer(self):
+        while True:
+            correct_ans = input(emoji.emojize("What letter is the correct answer? :thinking_face: ")).strip().lower()
+            if correct_ans in ['a', 'b', 'c', 'd']:
+                return correct_ans
+            else:
+                print(emoji.emojize("Invalid. Please enter a, b, c, or d only. :police_car_light:"))
