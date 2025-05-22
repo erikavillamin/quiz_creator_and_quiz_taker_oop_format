@@ -59,3 +59,22 @@ class QuizTakerApp:
         self.final_result_label.pack(pady=10)
 
         self.display_next_question()
+        
+    def display_next_question(self):
+        self.answer_feedback_label.config(text="")
+        if self.current_question_index >= len(self.quiz_questions):
+            self.display_final_score()
+            return
+
+        self.selected_option.set(None)
+        current_question = self.quiz_questions[self.current_question_index]
+        self.question_text_label.config(
+            text=(f"Q{self.current_question_index + 1}: {current_question['question']}")
+        )
+        for i, choice in enumerate(current_question['choices']):
+            choice_value = choice[0].upper()
+            self.answer_option_buttons[i].config(
+                text=choice, value=choice_value, state=tk.NORMAL
+            )
+        self.timer_secs = 15
+        self.update_timer()
