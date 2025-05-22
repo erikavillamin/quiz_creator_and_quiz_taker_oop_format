@@ -1,0 +1,21 @@
+Question: Who's the creator of Python?
+a) Isaac Newton
+b) Guido van Rossum
+c) Donald Trump
+d) Albert Einstein
+Answer: b
+
+Question: Which company developed the Windows operating system?
+a) Apple
+b) Microsoft
+c) Google
+d) IBM
+Answer: b
+
+Question: Which of the following is a volatile memory?
+a) ROM
+b) Hard Disk
+c) RAM
+d) SSD
+Answer: c
+

@@ -53,3 +53,7 @@ class QuizCreator:
             if not self.ask_to_continue():
                 print(emoji.emojize("Thank you for using Quiz Creator. :waving_hand:"))
                 break
+
+if __name__ == "__main__":
+    quiz_creator = QuizCreator()
+    quiz_creator.run()
