@@ -99,3 +99,48 @@ class QuizTakerApp:
             self.total_score += 1
         self.current_question_index += 1
         self.display_next_question()
+
+    def display_final_score(self):
+        self.question_text_label.config(text="Quiz Finished!")
+        for button in self.answer_option_buttons:
+            button.pack_forget()
+        self.submit_button.pack_forget()
+        self.answer_feedback_label.pack_forget()
+        self.timer_label.pack_forget()
+
+        total_questions = len(self.quiz_questions)
+        percentage = (self.total_score / total_questions) * 100
+
+        if percentage >= 80:
+            feedback_text = "Excellent work!"
+            score_color = "#28a745"  # green
+        elif percentage >= 50:
+            feedback_text = "Good job!"
+            score_color = "#FFA500"  # orange
+        else:
+            feedback_text = "Better luck next time!"
+            score_color = "#FF4C4C"  # red
+
+        result_frame = tk.Frame(self.app_window, bg=background_color, bd=2, relief="ridge")
+        result_frame.pack(pady=20, padx=30)
+
+        result_label = tk.Label(
+            result_frame,
+            text=f"Your Score: {self.total_score}/{total_questions} ({int(percentage)}%)\n{feedback_text}",
+            font=("Arial", 16, "bold"),
+            fg=score_color,
+            bg=background_color,
+            justify="center"
+        )
+        result_label.pack(padx=20, pady=20)
+
+        restart_button = tk.Button(
+            self.app_window,
+            text="Retake Quiz",
+            font=('Arial', 12),
+            bg=accent_color,
+            fg=background_color,
+            activebackground="#ffa733",
+            command=self.restart_quiz
+        )
+        restart_button.pack(pady=10)
