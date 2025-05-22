@@ -144,3 +144,10 @@ class QuizTakerApp:
             command=self.restart_quiz
         )
         restart_button.pack(pady=10)
+
+    def restart_quiz(self):
+        self.current_question_index = 0
+        self.total_score = 0
+        for widget in self.app_window.winfo_children():
+            widget.destroy()
+        self.__init__(self.app_window, self.quiz_questions)
