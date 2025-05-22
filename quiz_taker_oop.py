@@ -78,3 +78,12 @@ class QuizTakerApp:
             )
         self.timer_secs = 15
         self.update_timer()
+    
+    def update_timer(self):
+        self.timer_label.config(text=(f"Time left: {self.timer_secs} seconds"))
+        if self.timer_secs > 0:
+            self.timer_secs -= 1
+            self.timer_id = self.app_window.after(1000, self.update_timer)
+        else:
+            self.answer_feedback_label.config(text="Time's up!")
+            self.submit_answer(skip_check=True)
